@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>جمعية المبادرة الاجتماعية للتنمية البشرية والتضامن</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom colors for the green palette */
+        :root {
+            --color-emerald-50: #ecfdf5;
+            --color-emerald-100: #d1fae5;
+            --color-emerald-200: #a7f3d0;
+            --color-emerald-300: #6ee7b7;
+            --color-emerald-400: #34d399;
+            --color-emerald-500: #10b981;
+            --color-emerald-600: #059669;
+            --color-emerald-700: #047857;
+            --color-emerald-800: #065f46;
+            --color-emerald-900: #064e3b;
+            --color-emerald-950: #022c22;
+        }
+
+        .bg-emerald-600 { background-color: var(--color-emerald-600); }
+        .text-emerald-600 { color: var(--color-emerald-600); }
+        .bg-emerald-500 { background-color: var(--color-emerald-500); }
+        .hover\:bg-emerald-700:hover { background-color: var(--color-emerald-700); }
+        .text-emerald-700 { color: var(--color-emerald-700); }
+        .border-emerald-500 { border-color: var(--color-emerald-500); }
+        .bg-emerald-800 { background-color: var(--color-emerald-800); }
+        .text-emerald-200 { color: var(--color-emerald-200); }
+        .text-emerald-100 { color: var(--color-emerald-100); }
+        .border-emerald-700 { border-color: var(--color-emerald-700); }
+        .hover\:text-white:hover { color: white; }
+        .bg-gray-50 { background-color: #f9fafb; } /* Tailwind default gray-50 */
+        .bg-white { background-color: #ffffff; } /* Tailwind default white */
+        .text-gray-800 { color: #1f2937; } /* Tailwind default gray-800 */
+        .text-gray-700 { color: #374151; } /* Tailwind default gray-700 */
+        .text-gray-600 { color: #4b5563; } /* Tailwind default gray-600 */
+        .text-gray-900 { color: #111827; } /* Tailwind default gray-900 */
+        .text-gray-200 { color: #e5e7eb; } /* Tailwind default gray-200 */
+        .text-black\/60 { background-color: rgba(0, 0, 0, 0.6); }
+
+        /* Animations */
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in { animation: fade-in 1s ease-out forwards; }
+
+        @keyframes slide-up {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up { animation: slide-up 0.8s ease-out forwards; }
+
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
+
+        @keyframes zoom-in {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .animate-zoom-in { animation: zoom-in 0.8s ease-out forwards; }
+
+        @keyframes slide-in-right {
+            from { transform: translateX(20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .animate-slide-in-right { animation: slide-in-right 0.6s ease-out forwards; }
+        .animate-slide-in-right.delay-100 { animation-delay: 100ms; }
+        .animate-slide-in-right.delay-200 { animation-delay: 200ms; }
+        .animate-slide-in-right.delay-300 { animation-delay: 300ms; }
+        .animate-slide-in-right.delay-400 { animation-delay: 400ms; }
+
+        @keyframes slide-in-left {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        .animate-slide-in-left { animation: slide-in-left 0.6s ease-out forwards; }
+        .animate-slide-in-left.delay-0 { animation-delay: 0ms; }
+        .animate-slide-in-left.delay-100 { animation-delay: 100ms; }
+        .animate-slide-in-left.delay-200 { animation-delay: 200ms; }
+        .animate-slide-in-left.delay-300 { animation-delay: 300ms; }
+
+        /* Utility for hidden elements */
+        .hidden { display: none; }
+        .block { display: block; }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-white">
+    <div class="flex flex-col min-h-screen">
+        <!-- Navbar -->
+        <header class="px-4 lg:px-6 h-16 flex items-center justify-between bg-emerald-600 text-white shadow-md">
+            <a class="flex items-center justify-center" href="#" aria-label="الرئيسية">
+                <span class="text-2xl font-bold">جمعية المبادرة الاجتماعية للتنمية البشرية والتضامن</span>
+            </a>
+            <nav class="hidden lg:flex gap-6">
+                <a class="text-lg font-medium hover:underline underline-offset-4" href="#hero">الرئيسية</a>
+                <a class="text-lg font-medium hover:underline underline-offset-4" href="#about">من نحن</a>
+                <a class="text-lg font-medium hover:underline underline-offset-4" href="#goals">أهدافنا</a>
+                <a class="text-lg font-medium hover:underline underline-offset-4" href="#team">الإدارة</a>
+                <a class="text-lg font-medium hover:underline underline-offset-4" href="#contact">اتصل بنا</a>
+            </nav>
+            <button id="menu-button" class="lg:hidden p-2 rounded-md hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-white" aria-label="فتح القائمة">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                    <line x1="4" x2="20" y1="12" y2="12"></line>
+                    <line x1="4" x2="20" y1="6" y2="6"></line>
+                    <line x1="4" x2="20" y1="18" y2="18"></line>
+                </svg>
+                <span class="sr-only">فتح القائمة</span>
+            </button>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu" class="fixed inset-0 bg-black/50 z-50 hidden">
+                <div class="absolute right-0 top-0 h-full w-[250px] sm:w-[300px] bg-white text-gray-800 flex flex-col items-start p-6 shadow-lg">
+                    <button id="close-menu-button" class="absolute top-4 left-4 p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-300" aria-label="إغلاق القائمة">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                        <span class="sr-only">إغلاق القائمة</span>
+                    </button>
+                    <a class="flex items-center justify-center mb-8 mt-10" href="#">
+                        <span class="text-2xl font-bold text-emerald-600">جمعية الأمل</span>
+                    </a>
+                    <nav class="flex flex-col gap-4 text-right w-full">
+                        <a class="text-lg font-medium hover:text-emerald-600" href="#hero">الرئيسية</a>
+                        <a class="text-lg font-medium hover:text-emerald-600" href="#about">من نحن</a>
+                        <a class="text-lg font-medium hover:text-emerald-600" href="#goals">أهدافنا</a>
+                        <a class="text-lg font-medium hover:text-emerald-600" href="#team">الإدارة</a>
+                        <a class="text-lg font-medium hover:text-emerald-600" href="#contact">اتصل بنا</a>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1">
+            <!-- Hero Section -->
+<!-- Hero Section -->
+<section id="hero" class="relative w-full h-[400px] md:h-[500px] lg:h-[600px] flex items-center justify-center text-center bg-cover bg-center animate-fade-in" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI4MDAiIHZpZXdCb3g9IjAgMCAxNjAwIDgwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0iYmdHcmFkaWVudCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CjxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiNmOWZhZmI7c3RvcC1vcGFjaXR5OjEiIC8+CjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2VjZjBmMTtzdG9wLW9wYWNpdHk6MSIgLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cmVjdCB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI4MDAiIGZpbGw9InVybCgjYmdHcmFkaWVudCkiLz4KCjwhLS0gUGVvcGxlIGhvbGRpbmcgaGFuZHMgLSBDb21tdW5pdHkgLS0+CjxnIGZpbGw9IiMxMGI5ODEiIGZpbGwtb3BhY2l0eT0iMC4wOCI+CjxjaXJjbGUgY3g9IjMwMCIgY3k9IjI1MCIgcj0iMzAiLz4KPHJlY3QgeD0iMjg1IiB5PSIyODAiIHdpZHRoPSIzMCIgaGVpZ2h0PSI4MCIgcng9IjE1Ii8+CjxyZWN0IHg9IjI1MCIgeT0iMzIwIiB3aWR0aD0iMTUiIGhlaWdodD0iNDAiIHJ4PSI1Ii8+CjxyZWN0IHg9IjMzNSIgeT0iMzIwIiB3aWR0aD0iMTUiIGhlaWdodD0iNDAiIHJ4PSI1Ii8+CjxyZWN0IHg9IjI4NSIgeT0iMzYwIiB3aWR0aD0iMTUiIGhlaWdodD0iNTAiIHJ4PSI1Ii8+CjxyZWN0IHg9IjMwMCIgeT0iMzYwIiB3aWR0aD0iMTUiIGhlaWdodD0iNTAiIHJ4PSI1Ii8+CjwvZz4KCjxnIGZpbGw9IiMwNjk0ODgiIGZpbGwtb3BhY2l0eT0iMC4wNiI+CjxjaXJjbGUgY3g9IjUwMCIgY3k9IjMwMCIgcj0iMjgiLz4KPHJlY3QgeD0iNDg2IiB5PSIzMjgiIHdpZHRoPSIyOCIgaGVpZ2h0PSI3NSIgcng9IjE0Ii8+CjxyZWN0IHg9IjQ1NSIgeT0iMzY1IiB3aWR0aD0iMTQiIGhlaWdodD0iMzgiIHJ4PSI1Ii8+CjxyZWN0IHg9IjUzMSIgeT0iMzY1IiB3aWR0aD0iMTQiIGhlaWdodD0iMzgiIHJ4PSI1Ii8+CjxyZWN0IHg9IjQ4NiIgeT0iNDAzIiB3aWR0aD0iMTQiIGhlaWdodD0iNDciIHJ4PSI1Ii8+CjxyZWN0IHg9IjUwMCIgeT0iNDAzIiB3aWR0aD0iMTQiIGhlaWdodD0iNDciIHJ4PSI1Ii8+CjwvZz4KCjxnIGZpbGw9IiMxMGI5ODEiIGZpbGwtb3BhY2l0eT0iMC4wNyI+CjxjaXJjbGUgY3g9IjEyMDAiIGN5PSI0MDAiIHI9IjMyIi8+CjxyZWN0IHg9IjExODQiIHk9IjQzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9Ijg1IiByeD0iMTYiLz4KPHJlY3QgeD0iMTE0NiIgeT0iNDc1IiB3aWR0aD0iMTYiIGhlaWdodD0iNDIiIHJ4PSI1Ii8+CjxyZWN0IHg9IjEyMzgiIHk9IjQ3NSIgd2lkdGg9IjE2IiBoZWlnaHQ9IjQyIiByeD0iNSIvPgo8cmVjdCB4PSIxMTg0IiB5PSI1MTciIHdpZHRoPSIxNiIgaGVpZ2h0PSI1MyIgcng9IjUiLz4KPHJlY3QgeD0iMTIwMCIgeT0iNTE3IiB3aWR0aD0iMTYiIGhlaWdodD0iNTMiIHJ4PSI1Ii8+CjwvZz4KCjwhLS0gSGFuZHMgY29ubmVjdGluZyAtIFNvbGlkYXJpdHkgLS0+CjxwYXRoIGQ9Ik0zNTAgMzAwIFE2MDAgMjUwIDg1MCAzMDAiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSI4IiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjA1Ii8+CjxwYXRoIGQ9Ik04NTAgMzAwIFExMDI1IDM1MCAxMjAwIDQwMCIgc3Ryb2tlPSIjMTBiOTgxIiBzdHJva2Utd2lkdGg9IjgiIGZpbGw9Im5vbmUiIG9wYWNpdHk9IjAuMDUiLz4KCjwhLS0gSGVhcnRzIC0gQ29tcGFzc2lvbiAtLT4KPHBhdGggZD0iTTcwMCAyMDBDNjkwIDE4NSA2NzUgMTc1IDY1NSAxNzVTNjIwIDE4NSA2MTAgMjAwQzYxMCAxODUgNTk1IDE3NSA1NzUgMTc1UzU0MCA4NSA1MzAgMjAwQzUzMCAyMTAgNTQ1IDIyMCA1NzUgMjQwTDYxMCAyNzBMNjQ1IDI0MEM2NzUgMjIwIDY5MCAyMTAgNjkwIDIwMFoiIGZpbGw9IiNmZjY1OTQiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPgo8cGF0aCBkPSJNMTEwMCAzMDBDMTA5MCAyODUgMTA3NSAyNzUgMTA1NSAyNzVTMTAyMCAyODUgMTAxMCAzMDBDMTAxMCAyODUgOTk1IDI3NSA5NzUgMjc1UzkNNCAyODUgOTMwIDMwMEM5MzAgMzEwIDk0NSAzMjAgOTc1IDM0MEwxMDEwIDM3MEwxMDQ1IDM0MEM2NzUgMzIwIDEwOTAgMzEwIDEwOTAgMzAwWiIgZmlsbD0iI2Y5NzMxNiIgZmlsbC1vcGFjaXR5PSIwLjA0Ii8+Cgo8IS0tIFRyZWVzIC0gR3Jvd3RoIC0tPgo8ZyBmaWxsPSIjMDU5NjY5IiBmaWxsLW9wYWNpdHk9IjAuMDYiPgo8cmVjdCB4PSIxNDAiIHk9IjUwMCIgd2lkdGg9IjgiIGhlaWdodD0iNTAiLz4KPGVsbGlwc2UgY3g9IjE0NCIgY3k9IjQ4NSIgcng9IjI1IiByeT0iMzAiLz4KPGVsbGlwc2UgY3g9IjE0OCIgY3k9IjQ3MCIgcng9IjIwIiByeT0iMjUiLz4KPC9nPgoKPGcgZmlsbD0iIzBkOTQ4OCIgZmlsbC1vcGFjaXR5PSIwLjA0Ij4KPHJlY3QgeD0iMTQ1MCIgeT0iNTIwIiB3aWR0aD0iMTAiIGhlaWdodD0iNjAiLz4KPGVsbGlwc2UgY3g9IjE0NTUiIGN5PSI1MDAiIHJ4PSIzMCIgcnk9IjM1Ii8+CjxlbGxpcHNlIGN4PSIxNDYwIiBjeT0iNDgwIiByeD0iMjUiIHJ5PSIzMCIvPgo8L2c+Cgo8IS0tIEJ1aWxkaW5ncyAtIERldmVsb3BtZW50IC0tPgo8ZyBmaWxsPSIjMTBiOTgxIiBmaWxsLW9wYWNpdHk9IjAuMDUiPgo8cmVjdCB4PSI5MDAiIHk9IjQ1MCIgd2lkdGg9IjYwIiBoZWlnaHQ9IjEwMCIvPgo8cmVjdCB4PSI5NzAiIHk9IjQ3MCIgd2lkdGg9IjQwIiBoZWlnaHQ9IjgwIi8+CjxyZWN0IHg9IjEwMjAiIHk9IjQ5MCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjYwIi8+CjxyZWN0IHg9IjkwNSIgeT0iNDU1IiB3aWR0aD0iMTAiIGhlaWdodD0iOCIvPgo8cmVjdCB4PSI5MjAiIHk9IjQ1NSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjgiLz4KPHJlY3QgeD0iOTM1IiB5PSI0NTUiIHdpZHRoPSIxMCIgaGVpZ2h0PSI4Ii8+CjxyZWN0IHg9Ijk0NSIgeT0iNDU1IiB3aWR0aD0iMTAiIGhlaWdodD0iOCIvPgo8L2c+Cgo8IS0tIFN1biAtIEhvcGUgLS0+CjxjaXJjbGUgY3g9IjEzNTAiIGN5PSIxNTAiIHI9IjUwIiBmaWxsPSIjZmJiZjI0IiBmaWxsLW9wYWNpdHk9IjAuMDYiLz4KPGcgZmlsbD0iI2ZiYmYyNCIgZmlsbC1vcGFjaXR5PSIwLjA0Ij4KPGxpbmUgeDE9IjEzNTAiIHkxPSI3MCIgeDI9IjEzNTAiIHkyPSI5MCIgc3Ryb2tlPSIjZmJiZjI0IiBzdHJva2Utd2lkdGg9IjMiLz4KPGxpbmUgeDE9IjE0MzAiIHkxPSIxNTAiIHgyPSIxNDEwIiB5Mj0iMTUwIiBzdHJva2U9IiNmYmJmMjQiIHN0cm9rZS13aWR0aD0iMyIvPgo8bGluZSB4MT0iMTM5NSIgeTE9IjEwNSIgeDI9IjEzODAiIHkyPSI5MCIgc3Ryb2tlPSIjZmJiZjI0IiBzdHJva2Utd2lkdGg9IjMiLz4KPC9nPgoKPCEtLSBGbG93aW5nIGVsZW1lbnRzIC0tPgo8cGF0aCBkPSJNNTAgNTAwIFEyMDAgNDgwIDM1MCA1MDAgVDY1MCA1MDAiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjAzIi8+CjxwYXRoIGQ9Ik0xMDAwIDIwMCBRMTIwMCAxODAgMTQwMCAyMDAiIHN0cm9rZT0iIzEwYjk4MSIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIiBvcGFjaXR5PSIwLjAzIi8+Cgo8IS0tIERvdHMgZm9yIHZpdGFsaXR5IC0tPgo8Y2lyY2xlIGN4PSIyMDAiIGN5PSIxNzAiIHI9IjMiIGZpbGw9IiMxMGI5ODEiIGZpbGwtb3BhY2l0eT0iMC4wOCIvPgo8Y2lyY2xlIGN4PSI4MDAiIGN5PSIxODAiIHI9IjQiIGZpbGw9IiMwNjk0ODgiIGZpbGwtb3BhY2l0eT0iMC4wNyIvPgo8Y2lyY2xlIGN4PSI2MDAiIGN5PSI1NzAiIHI9IjUiIGZpbGw9IiMxMGI5ODEiIGZpbGwtb3BhY2l0eT0iMC4wNiIvPgo8Y2lyY2xlIGN4PSIxMDAwIiBjeT0iMTIwIiByPSIzIiBmaWxsPSIjZjk3MzE2IiBmaWxsLW9wYWNpdHk9IjAuMDUiLz4KPC9zdmc+');">
+    <div class="absolute inset-0 bg-gradient-to-br from-white/85 via-gray-50/80 to-white/90" aria-hidden="true"></div>
+    
+    <!-- Floating particles animation -->
+    <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <div class="floating-particle absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full"></div>
+        <div class="floating-particle absolute top-1/3 right-1/3 w-1 h-1 bg-emerald-300/30 rounded-full" style="animation-delay: -2s;"></div>
+        <div class="floating-particle absolute bottom-1/4 left-1/3 w-3 h-3 bg-white/15 rounded-full" style="animation-delay: -4s;"></div>
+        <div class="floating-particle absolute top-1/2 right-1/4 w-2 h-2 bg-teal-300/25 rounded-full" style="animation-delay: -6s;"></div>
+    </div>
+    
+    <div class="relative z-10 px-4 md:px-6 max-w-4xl space-y-6 animate-slide-up">
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 leading-tight drop-shadow-lg">
+          جمعية المبادرة الاجتماعية للتنمية البشرية والتضامن<br>
+          <span class="text-emerald-600 text-3xl md:text-5xl lg:text-6xl block mt-2">نحو مستقبل أفضل</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto drop-shadow leading-relaxed">
+            نعمل معًا لتمكين مجتمعنا وتعزيز قيم التكافل والتعاون لتحقيق التنمية المستدامة.
+        </p>
+        <a href="#about" class="inline-flex items-center justify-center bg-emerald-500 hover:bg-emerald-600 text-white text-lg px-8 py-4 rounded-full shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-emerald-500/30 border border-emerald-400/30 backdrop-blur-sm">
+            <span class="mr-2">اكتشف المزيد</span>
+            <svg class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+            </svg>
+        </a>
+    </div>
+
+    <style>
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slide-up {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px); 
+                opacity: 0.3;
+            }
+            25% { 
+                transform: translateY(-10px) translateX(5px); 
+                opacity: 0.7;
+            }
+            50% { 
+                transform: translateY(-20px) translateX(10px); 
+                opacity: 1;
+            }
+            75% { 
+                transform: translateY(-10px) translateX(5px); 
+                opacity: 0.7;
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fade-in 1s ease-out;
+        }
+        
+        .animate-slide-up {
+            animation: slide-up 0.8s ease-out 0.2s both;
+        }
+        
+        .floating-particle {
+            animation: float 8s infinite linear;
+        }
+        
+        #hero {
+            background-attachment: fixed;
+        }
+        
+        @media (max-width: 768px) {
+            #hero {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</section>
+
+<section class="about-section">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .about-section {
+            padding: 80px 20px;
+            /* background-color: #f8f9fa; */
+            max-width: 1200px;
+            margin: 0 auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            direction: rtl;
+            text-align: right;
+            margin-top: -60px;
+        }
+
+        .section-header {
+            text-align: right;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            background-color: #fff;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .section-tag::before {
+            content: "●";
+            color: #2E7D32;
+            margin-left: 8px;
+            font-size: 12px;
+        }
+
+        .section-tag::after {
+            content: "●";
+            color: #2E7D32;
+            margin-right: 8px;
+            font-size: 12px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .main-title .highlight {
+            color: #2E7D32;
+        }
+
+        .intro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            text-align: right;
+        }
+
+        .foundation-text {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            border-right: 4px solid #2E7D32;
+        }
+
+        .foundation-text h3 {
+            color: #2E7D32;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .address-section {
+            background: #2E7D32;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .address-section h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: right;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            margin-right: auto;
+            font-size: 24px;
+            color: white;
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            background-color: #2E7D32;
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background-color: #1B5E20;
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background-color: #4CAF50;
+        }
+
+        .feature-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .feature-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            text-align: right;
+        }
+
+        .media-section {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .main-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+
+        .secondary-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .secondary-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .secondary-image:hover img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 60px 15px;
+            }
+
+            .main-title {
+                font-size: 32px;
+            }
+
+            .intro-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .media-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .video-container {
+                margin-top: 20px;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid .feature-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+        }
+    </style>
+
+    <!-- Section Header -->
+    <div class="section-header">
+        <div class="section-tag">من نحن</div>
+        <h1 class="main-title">
+            جمعية <span class="highlight">المبادرة الاجتماعية</span><br>
+            للتنمية البشرية والتضامن
+        </h1>
+    </div>
+
+    <!-- Foundation Information -->
+    <div class="foundation-text">
+        <h3>تأسيس الجمعية</h3>
+        <p>أسست الجمعية طبقا للظهير الشريف رقم 58-376-1 والمؤرخ في 3 جمادى الأول 1373 لنونبر 1953 حسبما وقع تغييره بالظهير الشريف مثابة قانون رقم 3-11-73-2333 والمؤرخ في 6 ربيع الأول 1393 (10 أبريل 1973).</p>
+    </div>
+
+    <!-- Address Section -->
+    <div class="address-section">
+        <h4>📍 عنوان الجمعية</h4>
+        <p>قطاع 14 رقم 479 سيدي الطيبي القنيطرة</p>
+    </div>
+
+    <!-- Fields of Work -->
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🤝</div>
+            <h3 class="feature-title">المجال الاجتماعي</h3>
+            <p class="feature-description">نعمل على تقديم الدعم والمساعدة للفئات المحتاجة في المجتمع وتعزيز روح التضامن الاجتماعي.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🌱</div>
+            <h3 class="feature-title">المجال البيئي</h3>
+            <p class="feature-description">نساهم في حماية البيئة وتطوير الوعي البيئي من خلال برامج ومبادرات متنوعة.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3 class="feature-title">المجال الثقافي</h3>
+            <p class="feature-description">نعزز التراث الثقافي ونشجع الأنشطة الثقافية والتعليمية في المجتمع المحلي.</p>
+        </div>
+    </div>
+
+    <!-- Media Section -->
+    <div class="media-section">
+        <div class="main-image">
+            <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="أنشطة الجمعية">
+        </div>
+        
+        <div class="secondary-image">
+            <img src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="أعمال الجمعية">
+        </div>
+    </div>
+
+    <script>
+        // إضافة تأثيرات تفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // تحريك البطاقات عند التمرير
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // إخفاء العناصر وتهيئتها للتحريك
+            const animatedElements = document.querySelectorAll('.feature-card, .main-image, .secondary-image, .foundation-text, .address-section');
+            animatedElements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = `all 0.6s ease ${index * 0.1}s`;
+                observer.observe(el);
+            });
+
+            // تشغيل التحريك فوراً إذا كانت العناصر مرئية
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</section>
+
+<!-- Domains -->
+<section style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; direction: rtl; overflow-x: hidden; position: relative; padding: 2rem;">
+   <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden;">
+       <div style="position: absolute; opacity: 0.1; animation: float 6s ease-in-out infinite; top: 10%; right: 10%; animation-delay: 0s;">🌟</div>
+       <div style="position: absolute; opacity: 0.1; animation: float 6s ease-in-out infinite; top: 60%; right: 80%; animation-delay: 2s;">✨</div>
+       <div style="position: absolute; opacity: 0.1; animation: float 6s ease-in-out infinite; top: 80%; right: 20%; animation-delay: 4s;">💫</div>
+   </div>
+
+   <div style="max-width: 1200px; margin: 0 auto; padding: 2rem;">
+       <div style="text-align: center; color: #333; margin-bottom: 3rem; animation: fadeInDown 1s ease-out;">
+           <h1 style="font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">مجالات عمل الجمعية</h1>
+           <p style="font-size: 1.2rem;">اكتشف المجالات الثلاثة لعمل جمعيتنا</p>
+       </div>
+
+       <div style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; flex-wrap: wrap;" class="domains-nav">
+           <button class="domain-btn active" data-domain="social" style="background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 20px; padding: 1.5rem 2.5rem; color: #333; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; min-width: 200px; text-align: center; transform: translateY(-5px) scale(1.1); box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);">المجال الاجتماعي</button>
+           <button class="domain-btn" data-domain="cultural" style="background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 20px; padding: 1.5rem 2.5rem; color: #333; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; min-width: 200px; text-align: center;">المجال الثقافي</button>
+           <button class="domain-btn" data-domain="environmental" style="background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 2px solid rgba(102, 126, 234, 0.3); border-radius: 20px; padding: 1.5rem 2.5rem; color: #333; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative; overflow: hidden; min-width: 200px; text-align: center;">المجال البيئي</button>
+       </div>
+
+       <div style="background: rgba(255,255,255,0.95); border-radius: 25px; padding: 0; box-shadow: 0 25px 60px rgba(0,0,0,0.1); backdrop-filter: blur(20px); overflow: hidden; min-height: 600px; position: relative;" class="content-area">
+           <!-- Social Domain -->
+           <div class="domain-content social active" id="social" style="display: block; padding: 3rem; animation: slideInFromRight 0.8s ease-out; position: relative;">
+               <div style="display: flex; align-items: center; margin-bottom: 2rem; gap: 2rem;">
+                   <div style="width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; animation: pulse 2s infinite; box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: linear-gradient(135deg, #ff6b6b, #ee5a24);">🤝</div>
+                   <div>
+                       <h2 style="font-size: 2.5rem; color: #333; font-weight: bold; margin-bottom: 0.5rem;">المجال الاجتماعي</h2>
+                       <p style="font-size: 1.2rem; color: #666;">خدمة المجتمع والفئات المحتاجة</p>
+                   </div>
+               </div>
+               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.1s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">المساهمة في الأعمال الخيرية لفائدة الفئات الاجتماعية الفقيرة</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.2s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">المساهمة في التربية غير النظامية</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.3s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">الاهتمام بالطفل وتمكينه من الاستفادة من الأنشطة التربوية والمخيمات</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.4s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">محاربة عوامل انتشار الأمراض المعدية</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.5s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">القيام بحملات تحسيسية للتوعية الصحية</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.6s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">فك العزلة عن العالم القروي ومحاربة الهجرة القروية</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.7s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">ربط المنطقة المعزولة بالشبكة الوطنية للكهرباء والماء الصالح للشرب</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.8s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">إدماج المرأة في التنمية والاهتمام والعناية بالشخص المعاق</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #ff6b6b; transform: translateX(0); opacity: 1; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.9s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">إشراك الساكن في مشاريع التنمية الذاتية</div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Cultural Domain -->
+           <div class="domain-content cultural" id="cultural" style="display: none; padding: 3rem; animation: slideInFromRight 0.8s ease-out; position: relative;">
+               <div style="display: flex; align-items: center; margin-bottom: 2rem; gap: 2rem;">
+                   <div style="width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; animation: pulse 2s infinite; box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: linear-gradient(135deg, #3742fa, #2f3542);">🎭</div>
+                   <div>
+                       <h2 style="font-size: 2.5rem; color: #333; font-weight: bold; margin-bottom: 0.5rem;">المجال الثقافي</h2>
+                       <p style="font-size: 1.2rem; color: #666;">إثراء الحياة الثقافية والتربوية</p>
+                   </div>
+               </div>
+               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #3742fa; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.1s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">تنشيط المنطقة تربوياً وثقافياً ورياضياً</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #3742fa; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.2s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">المشاركة في الدورات التكوينية والمهرجانات الوطنية والدولية لإغناء رصيد الجمعية بالمعرفة</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #3742fa; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.3s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">المشاركة والمساهمة بمختلف الأنشطة الثقافية والملتقيات الوطنية والدولية</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #3742fa; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.4s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">الانفتاح على مختلف الثقافات الإنسانية وربط صلات التعاون والتنسيق مع الفعاليات والجمعيات ذات نفس الأهداف</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #3742fa; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.5s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">التنسيق مع جمعيات ومنظمات داخلية وخارجية للقيام بدورات تكوينية قصد استفادة الجميع</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #3742fa; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.6s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">التعريف بالمنتج المحلي ومؤهلاته</div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Environmental Domain -->
+           <div class="domain-content environmental" id="environmental" style="display: none; padding: 3rem; animation: slideInFromRight 0.8s ease-out; position: relative;">
+               <div style="display: flex; align-items: center; margin-bottom: 2rem; gap: 2rem;">
+                   <div style="width: 120px; height: 120px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; animation: pulse 2s infinite; box-shadow: 0 15px 35px rgba(0,0,0,0.2); background: linear-gradient(135deg, #2ed573, #1e3799);">🌱</div>
+                   <div>
+                       <h2 style="font-size: 2.5rem; color: #333; font-weight: bold; margin-bottom: 0.5rem;">المجال البيئي</h2>
+                       <p style="font-size: 1.2rem; color: #666;">حماية البيئة والموارد الطبيعية</p>
+                   </div>
+               </div>
+               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #2ed573; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.1s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">المحافظة على البيئة من التلوث</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #2ed573; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.2s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">المساهمة في عملية التشجير والحفاظ على الغابة من التلوث</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #2ed573; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.3s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">استعمال واستغلال الموارد الطبيعية بشكل مستدام</div>
+                   </div>
+                   <div class="activity-card" style="background: linear-gradient(135deg, #f8f9ff, #e8ecff); border-radius: 15px; padding: 1.5rem; border-left: 4px solid #2ed573; transform: translateX(50px); opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: all 0.3s ease; position: relative; overflow: hidden; animation-delay: 0.4s;">
+                       <div style="font-size: 1.1rem; line-height: 1.6; color: #444;">تعتبر الجمعية مستقلة عن أي هيئة سياسية أو نقابية أو طائفة مذهبية</div>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+       <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 2rem;">
+           <div class="nav-dot active" data-domain="social" style="width: 15px; height: 15px; border-radius: 50%; background: #667eea; cursor: pointer; transition: all 0.3s ease; animation: bounce 2s infinite; transform: scale(1.3); animation-delay: 0s;"></div>
+           <div class="nav-dot" data-domain="cultural" style="width: 15px; height: 15px; border-radius: 50%; background: rgba(102, 126, 234, 0.5); cursor: pointer; transition: all 0.3s ease; animation: bounce 2s infinite; animation-delay: 0.2s;"></div>
+           <div class="nav-dot" data-domain="environmental" style="width: 15px; height: 15px; border-radius: 50%; background: rgba(102, 126, 234, 0.5); cursor: pointer; transition: all 0.3s ease; animation: bounce 2s infinite; animation-delay: 0.4s;"></div>
+       </div>
+   </div>
+
+   <style>
+       @keyframes fadeInDown {
+           from { opacity: 0; transform: translateY(-50px); }
+           to { opacity: 1; transform: translateY(0); }
+       }
+       @keyframes slideInFromRight {
+           from { opacity: 0; transform: translateX(100px); }
+           to { opacity: 1; transform: translateX(0); }
+       }
+       @keyframes slideInLeft {
+           from { opacity: 0; transform: translateX(50px); }
+           to { opacity: 1; transform: translateX(0); }
+       }
+       @keyframes pulse {
+           0% { transform: scale(1); }
+           50% { transform: scale(1.1); }
+           100% { transform: scale(1); }
+       }
+       @keyframes bounce {
+           0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+           40% { transform: translateY(-10px); }
+           60% { transform: translateY(-5px); }
+       }
+       @keyframes float {
+           0%, 100% { transform: translateY(0px) rotate(0deg); }
+           50% { transform: translateY(-20px) rotate(180deg); }
+       }
+       
+       .domain-btn::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+           transition: left 0.5s;
+       }
+       .domain-btn:hover::before { left: 100%; }
+       .domain-btn:hover {
+           transform: translateY(-10px) scale(1.05);
+           box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+           border-color: rgba(102, 126, 234, 0.6);
+       }
+       .activity-card:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+       }
+       .activity-card::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           right: 0;
+           width: 3px;
+           height: 0;
+           background: linear-gradient(45deg, #ff6b6b, #3742fa, #2ed573);
+           transition: height 0.3s ease;
+       }
+       .activity-card:hover::before { height: 100%; }
+       
+       @media (max-width: 768px) {
+           .content-area div[style*="flex"] { flex-direction: column !important; text-align: center; }
+           .content-area div[style*="grid"] { grid-template-columns: 1fr !important; }
+       }
+   </style>
+
+   <script>
+       document.addEventListener('DOMContentLoaded', function() {
+           const domainBtns = document.querySelectorAll('.domain-btn');
+           const domainContents = document.querySelectorAll('.domain-content');
+           const navDots = document.querySelectorAll('.nav-dot');
+
+           function showDomain(targetDomain) {
+               domainContents.forEach(content => content.style.display = 'none');
+               domainBtns.forEach(btn => {
+                   btn.style.background = 'rgba(255,255,255,0.7)';
+                   btn.style.color = '#333';
+                   btn.style.transform = 'translateY(0) scale(1)';
+                   btn.style.boxShadow = 'none';
+               });
+               navDots.forEach(dot => {
+                   dot.style.background = 'rgba(102, 126, 234, 0.5)';
+                   dot.style.transform = 'scale(1)';
+               });
+
+               const targetContent = document.getElementById(targetDomain);
+               const targetBtn = document.querySelector(`[data-domain="${targetDomain}"]`);
+               const targetDot = document.querySelector(`.nav-dot[data-domain="${targetDomain}"]`);
+               
+               if (targetContent && targetBtn && targetDot) {
+                   setTimeout(() => targetContent.style.display = 'block', 100);
+                   targetBtn.style.background = 'rgba(255,255,255,0.9)';
+                   targetBtn.style.color = '#333';
+                   targetBtn.style.transform = 'translateY(-5px) scale(1.1)';
+                   targetBtn.style.boxShadow = '0 15px 35px rgba(102, 126, 234, 0.3)';
+                   targetDot.style.background = '#667eea';
+                   targetDot.style.transform = 'scale(1.3)';
+               }
+           }
+
+           domainBtns.forEach(btn => {
+               btn.addEventListener('click', function() {
+                   showDomain(this.getAttribute('data-domain'));
+               });
+           });
+
+           navDots.forEach(dot => {
+               dot.addEventListener('click', function() {
+                   showDomain(this.getAttribute('data-domain'));
+               });
+           });
+
+           const domains = ['social', 'cultural', 'environmental'];
+           let currentIndex = 0;
+           setInterval(() => {
+               currentIndex = (currentIndex + 1) % domains.length;
+               showDomain(domains[currentIndex]);
+           }, 8000);
+       });
+   </script>
+</section>
+
+<!-- Association Cards Section -->
+<section class="association-cards-section">
+    <style>
+        .association-cards-section {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgb(6, 95, 70) 0%, rgb(4, 75, 55) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .association-cards-section h2 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 50px;
+            text-align: center;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            animation: titleSlideIn 1s ease-out;
+        }
+
+        .association-cards-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            border-radius: 2px;
+        }
+
+        @keyframes titleSlideIn {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cards-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .card-wrapper {
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            animation: cardFadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card-wrapper:nth-child(1) {
+            animation-delay: 0.3s;
+        }
+
+        .card-wrapper:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes cardFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card-wrapper:hover {
+            transform: translateY(-15px) scale(1.05);
+        }
+
+        .association-card {
+            width: 350px;
+            height: 220px;
+            border-radius: 15px;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 10px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            background: #fff;
+            border: 3px solid #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .association-card:hover {
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.25),
+                0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: rgb(6, 95, 70);
+        }
+
+        .association-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .association-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(6, 95, 70, 0.85) 0%,
+                rgba(4, 75, 55, 0.85) 100%
+            );
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .association-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .overlay-text {
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .association-card:hover .overlay-text {
+            transform: translateY(0);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            color: rgb(6, 95, 70);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .association-cards-section {
+                padding: 40px 15px;
+            }
+
+            .association-cards-section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+            }
+
+            .cards-container {
+                gap: 25px;
+            }
+
+            .association-card {
+                width: 300px;
+                height: 190px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .association-cards-section h2 {
+                font-size: 1.6rem;
+                letter-spacing: 1px;
+            }
+
+            .association-card {
+                width: 280px;
+                height: 175px;
+            }
+
+            .cards-container {
+                gap: 20px;
+            }
+        }
+
+        /* Lightbox Modal */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+            animation: lightboxFadeIn 0.3s ease;
+        }
+
+        @keyframes lightboxFadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: lightboxImageScale 0.3s ease;
+        }
+
+        @keyframes lightboxImageScale {
+            0% { transform: scale(0.8); }
+            100% { transform: scale(1); }
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+
+    <h2>Ma carte d'association</h2>
+    
+    <div class="cards-container">
+        <div class="card-wrapper">
+            <div class="association-card" onclick="openLightbox('card1')">
+                <div class="card-number">01</div>
+                <img src="img 1.jpg" alt="Carte d'association 1" id="card1">
+                <div class="card-overlay">
+                    <div class="overlay-text">Voir en grand</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-wrapper">
+            <div class="association-card" onclick="openLightbox('card2')">
+                <div class="card-number">02</div>
+                <img src="img 2.jpg" alt="Carte d'association 2" id="card2">
+                <div class="card-overlay">
+                    <div class="overlay-text">Voir en grand</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-close" onclick="closeLightbox()">&times;</div>
+        <img src="" alt="Carte d'association" id="lightbox-img">
+    </div>
+
+    <script>
+        function openLightbox(cardId) {
+            const img = document.getElementById(cardId);
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Prevent card click when clicking on lightbox image
+        document.getElementById('lightbox-img').addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    </script>
+</section>
+<!-- Frames and Presidents Section -->
+<section id="team" class="team-section">
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+
+        :root {
+          --color-primary-dark: #2c3e50; /* Dark Slate Blue */
+          --color-primary-light: #34495e; /* Slightly lighter dark blue */
+          --color-accent: #f39c12; /* Muted Gold/Orange */
+          --color-text-heading: #2c3e50;
+          --color-text-body: #7f8c8d; /* Gray */
+          --color-background-section: #f8f9fa; /* Very light gray */
+          --color-card-background: #ffffff; /* White */
+          --color-border: #e0e0e0; /* Light gray border */
+          --color-shadow-light: rgba(0, 0, 0, 0.05);
+          --color-shadow-medium: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .team-section {
+          font-family: 'Tajawal', sans-serif;
+          direction: rtl;
+          position: relative;
+          min-height: 100vh;
+          padding: 80px 0;
+          background: var(--color-background-section);
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .background-pattern {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          opacity: 0.05;
+          background-image:
+            radial-gradient(circle at 20% 80%, var(--color-primary-dark) 1px, transparent 1px),
+            radial-gradient(circle at 80% 20%, var(--color-primary-dark) 1px, transparent 1px);
+          background-size: 80px 80px;
+          animation: float-subtle 30s ease-in-out infinite;
+        }
+
+        @keyframes float-subtle {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(0.5deg); }
+        }
+
+        .container {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 0 20px;
+          position: relative;
+          z-index: 2;
+        }
+
+        .section-header {
+          text-align: center;
+          margin-bottom: 60px;
+          animation: fadeInUp 0.8s ease-out forwards;
+          opacity: 0; /* Start hidden for animation */
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .title-decoration {
+          width: 60px;
+          height: 3px;
+          background: var(--color-accent);
+          margin: 0 auto 15px;
+          border-radius: 2px;
+        }
+
+        .section-title {
+          font-size: clamp(2rem, 5vw, 3.5rem);
+          font-weight: 700;
+          color: var(--color-text-heading);
+          margin-bottom: 10px;
+          text-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .section-subtitle {
+          font-size: 1.1rem;
+          color: var(--color-text-body);
+          font-weight: 400;
+        }
+
+        .cards-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          gap: 40px;
+          max-width: 1000px;
+          margin: 0 auto;
+        }
+
+        .role-card {
+          background: var(--color-card-background);
+          border-radius: 16px;
+          padding: 40px;
+          box-shadow:
+            0 10px 30px var(--color-shadow-light),
+            0 0 0 1px var(--color-border);
+          transition: all 0.3s ease-in-out;
+          position: relative;
+          overflow: hidden;
+          animation: slideInUp 0.8s ease-out forwards;
+          opacity: 0; /* Start hidden for animation */
+        }
+
+        @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .role-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 4px;
+          background: var(--color-primary-dark);
+          border-top-left-radius: 16px;
+          border-top-right-radius: 16px;
+          transition: all 0.3s ease;
+        }
+
+        .role-card:hover {
+          transform: translateY(-8px);
+          box-shadow:
+            0 15px 40px var(--color-shadow-medium),
+            0 0 0 1px var(--color-accent);
+        }
+
+        .role-card:hover::before {
+          height: 6px;
+          background: var(--color-accent);
+        }
+
+        .primary-card {
+          animation-delay: 0.2s;
+        }
+
+        .secondary-card {
+          animation-delay: 0.4s;
+        }
+
+        .card-header {
+          text-align: center;
+          margin-bottom: 30px;
+          position: relative;
+        }
+
+        .role-icon {
+          width: 70px;
+          height: 70px;
+          margin: 0 auto 20px;
+          background: var(--color-primary-dark);
+          border-radius: 12px; /* Slightly less rounded */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          transition: all 0.3s ease;
+        }
+
+        .role-card:hover .role-icon {
+          transform: scale(1.05);
+          background: var(--color-accent);
+        }
+
+        .role-icon.secondary {
+          background: var(--color-primary-light);
+        }
+
+        .role-card:hover .role-icon.secondary {
+          background: var(--color-accent);
+        }
+
+        .role-title {
+          font-size: 1.7rem;
+          font-weight: 600;
+          color: var(--color-text-heading);
+          margin-bottom: 10px;
+        }
+
+        .role-badge {
+          display: inline-block;
+          padding: 6px 18px;
+          background: var(--color-primary-dark);
+          color: white;
+          border-radius: 16px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+        }
+
+        .role-badge.secondary {
+          background: var(--color-primary-light);
+        }
+
+        .card-content {
+          margin-top: 30px;
+        }
+
+        .responsibilities-list {
+          list-style: none;
+          padding: 0;
+          display: grid;
+          gap: 15px;
+        }
+
+        .responsibility-item {
+          background: var(--color-card-background);
+          border-radius: 12px;
+          padding: 18px;
+          box-shadow:
+            0 5px 15px rgba(0,0,0,0.03),
+            0 0 0 1px var(--color-border);
+          transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .responsibility-item::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 3px;
+          height: 100%;
+          background: var(--color-primary-dark);
+          border-top-right-radius: 12px;
+          border-bottom-right-radius: 12px;
+          transition: all 0.3s ease;
+        }
+
+        .responsibility-item:hover {
+          transform: translateX(-5px);
+          box-shadow:
+            0 8px 20px rgba(0,0,0,0.08),
+            0 0 0 1px var(--color-accent);
+        }
+
+        .responsibility-item:hover::before {
+          width: 5px;
+          background: var(--color-accent);
+        }
+
+        .task-content {
+          display: flex;
+          align-items: flex-start; /* Align items to the top */
+          gap: 15px;
+        }
+
+        .task-icon {
+          width: 36px;
+          height: 36px;
+          background: var(--color-primary-dark);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: white;
+          flex-shrink: 0;
+          transition: all 0.3s ease;
+        }
+
+        .responsibility-item:hover .task-icon {
+          transform: scale(1.05);
+          background: var(--color-accent);
+        }
+
+        .task-text {
+          flex: 1;
+        }
+
+        .responsibility-item span {
+          color: var(--color-text-body);
+          line-height: 1.6;
+          font-size: 0.95rem;
+          font-weight: 400;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .team-section {
+            padding: 60px 0;
+          }
+          .container {
+            padding: 0 15px;
+          }
+          .cards-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+          .role-card {
+            padding: 30px 25px;
+          }
+          .section-title {
+            font-size: 2.5rem;
+          }
+          .responsibility-item {
+            padding: 15px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .role-card {
+            padding: 25px 20px;
+          }
+          .role-icon {
+            width: 60px;
+            height: 60px;
+          }
+          .role-title {
+            font-size: 1.5rem;
+          }
+          .responsibility-item span {
+            font-size: 0.9rem;
+          }
+        }
+      </style>
+      <div class="background-pattern"></div>
+      <div class="container">
+        <div class="section-header">
+          <div class="title-decoration"></div>
+          <h2 class="section-title">تحديد مهام أعضاء المكتب الإداري</h2>
+          <p class="section-subtitle">هيكلة واضحة لمسؤوليات القيادة الإدارية</p>
+        </div>
+        <div class="cards-grid">
+          <!-- First President Card -->
+          <div class="role-card primary-card">
+            <div class="card-header">
+              <div class="role-icon">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              </div>
+              <h3 class="role-title">الرئيس الأول</h3>
+              <div class="role-badge">المسؤول الرئيسي</div>
+            </div>
+            <div class="card-content">
+              <ul class="responsibilities-list">
+                <li class="responsibility-item">
+                  <div class="task-content">
+                    <div class="task-icon">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+                      </svg>
+                    </div>
+                    <div class="task-text">
+                      <span>يترأس اجتماعات المكتب واجتماعات لجان الجمعية</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="responsibility-item">
+                  <div class="task-content">
+                    <div class="task-icon">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                      </svg>
+                    </div>
+                    <div class="task-text">
+                      <span>يتولى تسييرها</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="responsibility-item">
+                  <div class="task-content">
+                    <div class="task-icon">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                    </div>
+                    <div class="task-text">
+                      <span>يمثل الجمعية لدى جميع المصالح الإدارية وفي جميع مظاهر الحياة المدنية</span>
+                    </div>
+                  </div>
+                </li>
+                <li class="responsibility-item">
+                  <div class="task-content">
+                    <div class="task-icon">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/>
+                      </svg>
+                    </div>
+                    <div class="task-text">
+                      <span>يوقع بجانب أمين المال على الشيكات البنكية والبريدية</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Other Presidents Card -->
+          <div class="role-card secondary-card">
+            <div class="card-header">
+              <div class="role-icon secondary">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32">
+                  <path d="M16 17v2H2v-2s0-4 7-4 7 4 7 4m-3.5-9.5A3.5 3.5 0 1 0 9 11a3.5 3.5 0 0 0 3.5-3.5m3.44 5.5A5.32 5.32 0 0 1 18 17v2h4v-2s0-3.63-6.06-4M15 4a3.39 3.39 0 0 1 0 6.74 2.94 2.94 0 0 0 .89.26A4.49 4.49 0 0 0 15 4z"/>
+                </svg>
+              </div>
+              <h3 class="role-title">الرؤساء الآخرون</h3>
+              <div class="role-badge secondary">المساعدون</div>
+            </div>
+            <div class="card-content">
+              <ul class="responsibilities-list">
+                <li class="responsibility-item">
+                  <div class="task-content">
+                    <div class="task-icon">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                      </svg>
+                    </div>
+                    <div class="task-text">
+                      <span>يقومون بمهام الرئيس الأول في حالة غيابه وذلك بتفويض منه</span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        // Add intersection observer for scroll animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -100px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = 'running';
+            }
+          });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.role-card, .section-header').forEach(el => {
+          observer.observe(el);
+        });
+
+        // Add dynamic hover effects (retained from original, adjusted for new styles)
+        document.querySelectorAll('.role-card').forEach(card => {
+          card.addEventListener('mouseenter', (e) => {
+            const icon = e.target.querySelector('.role-icon');
+            if (icon) {
+              icon.style.transform = 'scale(1.05)'; // Subtle scale
+            }
+          });
+          card.addEventListener('mouseleave', (e) => {
+            const icon = e.target.querySelector('.role-icon');
+            if (icon) {
+              icon.style.transform = 'scale(1)';
+            }
+          });
+        });
+
+        // Add subtle parallax effect to background
+        window.addEventListener('scroll', () => {
+          const scrolled = window.pageYOffset;
+          const pattern = document.querySelector('.background-pattern');
+          if (pattern) {
+            pattern.style.transform = `translateY(${scrolled * 0.05}px)`; // Reduced parallax effect
+          }
+        });
+
+        // Add loading animation (retained from original)
+        document.addEventListener('DOMContentLoaded', () => {
+          const cards = document.querySelectorAll('.role-card');
+          cards.forEach((card, index) => {
+            card.style.animationDelay = `${0.2 + index * 0.2}s`;
+          });
+        });
+      </script>
+    </section>
+
+        </main>
+
+        <!-- Footer Section -->
+        <footer id="contact" class="w-full py-12 md:py-16 bg-emerald-800 text-white animate-fade-in-up">
+            <div class="container mx-auto px-4 md:px-6 grid gap-8 md:grid-cols-2 lg:grid-cols-4 text-right">
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-bold text-emerald-200">جمعية الأمل</h3>
+                    <p class="text-emerald-100 leading-relaxed">نعمل من أجل مجتمع مزدهر ومستقبل أفضل للجميع.</p>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-200">روابط سريعة</h3>
+                    <nav class="flex flex-col gap-2">
+                        <a class="text-emerald-100 hover:underline underline-offset-4" href="#hero">الرئيسية</a>
+                        <a class="text-emerald-100 hover:underline underline-offset-4" href="#about">من نحن</a>
+                        <a class="text-emerald-100 hover:underline underline-offset-4" href="#goals">أهدافنا</a>
+                        <a class="text-emerald-100 hover:underline underline-offset-4" href="#team">الإدارة</a>
+                    </nav>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-200">اتصل بنا</h3>
+                    <div class="flex flex-col gap-2 text-emerald-100">
+                        <div class="flex items-center gap-2 justify-end">
+                            <span>   بقطاع 14 رقم 479 سيدي الطيبي القنيطرة.
+ </span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="flex items-center gap-2 justify-end">
+                            <span>+966 11 234 5678</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="flex items-center gap-2 justify-end">
+                            <span>info@alamal.org.sa</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-xl font-semibold text-emerald-200">تابعنا</h3>
+                    <div class="flex gap-4 justify-end">
+                        <a href="#" aria-label="فيسبوك">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-emerald-100 hover:text-white transition-colors duration-200">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="تويتر">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-emerald-100 hover:text-white transition-colors duration-200">
+                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="انستغرام">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-emerald-100 hover:text-white transition-colors duration-200">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 pt-6 border-t border-emerald-700 text-center text-emerald-200 text-sm">
+                © 2024 جمعية الأمل. جميع الحقوق محفوظة.
+            </div>
+        </footer>
+    </div>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
