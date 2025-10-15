@@ -9,7 +9,128 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
+        /* Color Palette:
+   --primary-green: #38761d; (Dark Green for headings/buttons)
+   --secondary-green: #6aa84f; (Medium Green for accents)
+   --light-bg: #f3f7f1; (Very Light Green/Off-White Background)
+   --text-color: #333; (Dark Gray/Black for body text)
+*/
+
+.president-section {
+    padding: 60px 20px;
+    background-color: var(--light-bg, #f3f7f1); /* Light background for contrast */
+    font-family: Arial, sans-serif; /* Use your site's main font */
+}
+
+.president-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex; /* Enable Flexbox layout */
+    align-items: center; /* Vertically align items in the center */
+    gap: 40px; /* Space between image and text */
+}
+
+/* Image Styling */
+.president-image-wrapper {
+    flex: 1; /* Takes up 1 part of the space */
+    max-width: 350px; /* Maximum width for the image wrapper */
+    border-radius: 10px; /* Soft rounded corners for the wrapper */
+    overflow: hidden; /* Ensures the image respects the border-radius */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.president-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Ensures the image covers the area nicely */
+    transition: transform 0.3s ease-in-out;
+}
+
+.president-photo:hover {
+    transform: scale(1.03); /* Subtle hover effect */
+}
+
+/* Info Styling */
+.president-info {
+    flex: 2; /* Takes up 2 parts of the space (more room for text) */
+    text-align: left;
+}
+
+.president-name {
+    font-size: 2.5em;
+    color: var(--primary-green, #38761d); /* Dark Green for the name */
+    margin-bottom: 5px;
+}
+
+.president-title {
+    font-size: 1.2em;
+    color: var(--secondary-green, #6aa84f); /* Medium Green for the title */
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.divider {
+    border: none;
+    height: 3px;
+    width: 80px;
+    background-color: var(--secondary-green, #6aa84f);
+    margin-left: 0;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.president-bio {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-color, #333);
+    margin-bottom: 30px;
+}
+
+/* Button Styling */
+.btn-contact {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: var(--primary-green, #38761d);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none; /* Add this line for the button element */
+    cursor: pointer; /* Add this line for the button element */
+    transition: background-color 0.3s ease;
+}
+
+.btn-contact:hover {
+    background-color: #275615; /* Slightly darker green on hover */
+}
+
+/* --- Basic Responsiveness (Mobile View) --- */
+@media (max-width: 768px) {
+    .president-container {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center; /* Center text content */
+    }
+
+    .president-image-wrapper {
+        max-width: 80%; /* Make image take up more width on small screens */
+        margin-bottom: 30px;
+    }
+
+    .president-info {
+        text-align: center;
+    }
+    
+    .divider {
+        margin-left: auto; /* Center the divider */
+        margin-right: auto;
+    }
+}
         /* Custom colors for the green palette */
         :root {
             --color-emerald-50: #ecfdf5;
@@ -1650,6 +1771,25 @@
       </script>
     </section>
 
+    <section class="president-section">
+    <div class="president-container">
+        <div class="president-image-wrapper">
+            <img src="president.jpg" alt="[President's Name] - Association President" class="president-photo">
+        </div>
+    <div class="president-info">
+    <h2 class="president-name">محمد صوافة </h2>
+    <p class="president-title">رئيس جمعية المبادرة الاجتماعية للتنمية البشرية والتضامن</p>
+    <hr class="divider">
+    <p class="president-bio" dir="rtl">
+        "قائد ذو رؤية ثاقبة ومؤسس ملتزم بتطوير مهمتنا النبيلة. يمتلك السيد محمد صوافة خبرة تزيد عن 15 عاماً في مجال التنمية البشرية والعمل الجمعوي، ويسعى جاهداً لتحقيق الأهداف السامية للجمعية بالتعاون مع كافة الشركاء."
+    </p>
+    <button class="btn-contact" onclick="showPresidentNumber('0682469780')">
+        تواصل مع الرئيس
+    </button>
+</div>
+    </div>
+</section>
+
         </main>
 
         <!-- Footer Section -->
@@ -1680,18 +1820,12 @@
                             </svg>
                         </div>
                         <div class="flex items-center gap-2 justify-end">
-                            <span>+966 11 234 5678</span>
+                            <span>0682469780</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
                                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
                         </div>
-                        <div class="flex items-center gap-2 justify-end">
-                            <span>info@alamal.org.sa</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
-                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                            </svg>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="space-y-4">
@@ -1725,5 +1859,27 @@
 
     <!-- Custom JavaScript -->
     <script src="script.js"></script>
+    <script>
+    function showPresidentNumber(phoneNumber) {
+        Swal.fire({
+            title: 'رقم هاتف الرئيس',
+            html: '<p style="direction: rtl; font-size: 1.5em; color: #38761d; font-weight: bold; user-select: text;">' + phoneNumber + '</p>' +
+                  '<p style="font-size: 0.9em; color: #666;">يمكنك نسخ الرقم مباشرة.</p>',
+            icon: 'info',
+            confirmButtonText: 'إغلاق',
+            confirmButtonColor: '#38761d', // Primary Green
+            // Optional: Add a button to call the number immediately
+            showCancelButton: true,
+            cancelButtonText: 'اتصال مباشر',
+            cancelButtonColor: '#6aa84f', // Secondary Green
+            reverseButtons: true // Puts "Call" on the left, "Close" on the right
+        }).then((result) => {
+            // If the user clicks the "Call Directly" button (Cancel Button)
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                window.location.href = 'tel:+' + phoneNumber;
+            }
+        });
+    }
+</script>
 </body>
 </html>
